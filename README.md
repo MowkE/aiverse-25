@@ -54,6 +54,24 @@ uv run universe25 figures --summary outputs/smoke/run_summary.csv --out outputs/
 uv run universe25 power --summary outputs/pilot/run_summary.csv
 ```
 
+## Study 2 (LLM agents)
+
+The LLM-agent confirmation layer lives in `src/universe25/llm/` — see
+[docs/LLM_DESIGN.md](docs/LLM_DESIGN.md) and
+[docs/LLM_EXPERIMENT.md](docs/LLM_EXPERIMENT.md). No real API call has been
+made; all tests and smoke runs use a deterministic mock provider.
+
+```bash
+# Mock end-to-end smoke (4 runs, zero API calls, zero dollars)
+./scripts/llm_smoke.sh
+
+# Cost estimate for a config (makes no calls)
+uv run universe25-llm estimate --config configs/llm_pilot.toml
+
+# Real batches are blocked without an explicit budget confirmation
+uv run universe25-llm run-batch --config configs/llm_pilot.toml --confirm-budget <dollars>
+```
+
 Outputs: tidy event log (Parquet: `run_id, seed, cell, round, agent_id, action, value…`) and a
 run-level summary (CSV + Parquet). Every seed and resolved config is recorded alongside outputs.
 

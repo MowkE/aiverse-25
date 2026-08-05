@@ -40,7 +40,9 @@ def normalized_hhi(x: np.ndarray) -> float:
         return 0.0
     shares = x / total
     hhi = float((shares**2).sum())
-    return (hhi - 1.0 / n) / (1.0 - 1.0 / n)
+    # Clamp floating-point error (e.g. equal shares can give hhi = 1/n - 7e-17,
+    # found by hypothesis); the metric is mathematically in [0, 1].
+    return max(0.0, (hhi - 1.0 / n) / (1.0 - 1.0 / n))
 
 
 def entropy(counts: np.ndarray) -> float:

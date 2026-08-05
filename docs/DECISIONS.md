@@ -1,5 +1,13 @@
 # DECISIONS — unresolved scientific choices and recorded deviations
 
+## D13 — Post-freeze FP clamp in normalized_hhi (RECORDED 2026-08-05, integrity-verified)
+During Study 2 development, property testing found `normalized_hhi` can return −6.9e−17 on
+exactly-equal vectors (floating-point error violating the nHHI ∈ [0,1] invariant). Fixed with a
+`max(0.0, …)` clamp. Because this touches Study 1 code after the freeze, the frozen confirmatory
+batch was regenerated under the clamped code and diffed against `data/confirmatory_run_summary.csv`:
+**byte-identical**. The preregistered results are unaffected; the clamp is a numerical-hygiene fix,
+not an analysis change.
+
 Choices the model had to make that science has not yet settled. Each is either **flagged** (needs
 your sign-off before the preregistered run) or **recorded** (a deviation from the source docs with
 rationale). Nothing here is hidden in code: every item maps to a config field.

@@ -1,0 +1,20 @@
+# Study 2 engineering pilot (REAL calls when provider != "mock").
+# Running this against a real provider requires:
+#   uv run universe25-llm run-batch --config configs/llm_pilot.toml --confirm-budget <dollars>
+# and the estimate must fit inside the confirmed budget. Model choice and
+# effort/thinking settings are open decision L1 (docs/LLM_DESIGN.md §12).
+
+master_seed = 271828182   # disjoint from Study 1 pilot (20260805) and confirmatory (314159265)
+n_pairs = 5               # 20 runs
+output_dir = "outputs/llm_pilot"
+
+[run]
+n_agents = 8
+n_rounds = 40
+provider = "anthropic"
+model = "claude-sonnet-5"
+effort = "medium"
+thinking = "disabled"
+template_version = "llm-t1"
+max_schema_retries = 2
+report_rounds = "last"

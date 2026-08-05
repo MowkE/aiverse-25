@@ -1,0 +1,15 @@
+# Study 2 mock smoke: 1 pair x 4 cells = 4 runs, MockProvider only.
+# No API call is ever made from this config.
+
+master_seed = 20260805
+n_pairs = 1
+output_dir = "outputs/llm_smoke"
+
+[run]
+n_agents = 8
+n_rounds = 40
+provider = "mock"
+model = "claude-sonnet-5"
+template_version = "llm-t1"
+max_schema_retries = 2
+report_rounds = "last"
