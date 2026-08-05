@@ -72,6 +72,18 @@ preregistration.
 Survival failure = inactive round, not removal. Keeps N fixed (the flagship's scope guard) and
 avoids conflating role scarcity with demographic turnover.
 
+## D14 — Study 2 open decisions L1–L5 (L2–L5 resolved by default 2026-08-05; L1 DEFERRED)
+From docs/LLM_DESIGN.md. Defaults adopted: **L2** schedule disclosure = experienced, not described
+(chair announced each round; assignment rule never stated — mirrors the ABM, where agents observe
+realized authority only); **L3** retry feedback = validation error appended on re-ask (higher
+valid-output rate; retries logged as data); **L4** report cadence = "last" (structured reports are
+exploratory secondary outcomes per VALIDATION M1 — minimize self-report surface and cost);
+**L5** keep the 240-char message cap and next-round visibility; memory-digest truncation noted as
+a cost lever to evaluate in the LLM pilot, not adopted blind. **L1 (confirmatory model, effort,
+thinking, frozen prices) is the researcher's call** — recommendation on record: pilot on
+claude-haiku-4-5 AND claude-sonnet-5 (doubles as the cross-model robustness requirement),
+confirmatory on claude-sonnet-5, prices re-verified and frozen at preregistration.
+
 ## D12 — Two constrained-side channels feed the interaction (RESOLVED 2026-08-05 by pilot)
 The pilot ran the decomposition. Result: material crowding-out (the participation cost binding
 under scarcity) is the dominant and only positive channel; the attention bonus pushed the other
