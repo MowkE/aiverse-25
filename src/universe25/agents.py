@@ -2,9 +2,9 @@
 
 Behavioral code is treatment-blind: nothing here may branch on the treatment
 cell. Treatments reach agents only through environment state (budgets, realized
-influence, observed reciprocity). The single exception, the survival-attention
-term, responds to whether material stakes bind (an environment fact), and is
-the named H4 mechanism carrier (DECISIONS D4).
+influence, observed reciprocity). The survival-attention term responds to
+whether material stakes bind (an environment fact); it defaults to 0 after the
+pilot showed it works against the crowding-out mechanism (DECISIONS D4).
 """
 
 from __future__ import annotations

@@ -1,0 +1,16 @@
+# Sensitivity variant (DECISIONS D4, pilot-revised): the psychological
+# survival-attention bonus switched ON. In the pilot this channel worked
+# against the crowding-out interaction (it asymmetrically rescues engaged
+# agents in constrained cells), so it is 0 in the default model; this config
+# preserves it as a reportable robustness arm.
+
+master_seed = 20260805
+n_pairs = 30
+output_dir = "outputs/sensitivity_survival_attention_on"
+
+[run]
+n_agents = 8
+n_rounds = 40
+
+[run.behavior]
+survival_attention_bonus = 0.8

@@ -18,11 +18,25 @@ recommended follow-up experiment per the vision doc's marginalia.
 ## D3 — H3 demoted to manipulation check; H4 promoted to preregistered primary (RECORDED)
 See VALIDATION C1/M2. The paper's headline test is the interaction.
 
-## D4 — `survival_attention_bonus` carries the H4 mechanism (FLAGGED)
-The claim "material stakes keep agents publicly engaged" is a behavioral assumption, made explicit
-and sweepable. Mandatory sensitivity analysis at 0. If you believe abundance should amplify
-dysfunction through a different channel (e.g., status salience), that is a different model —
-decide before freezing.
+## D4 — H4 mechanism channel (RESOLVED 2026-08-05, revised by pilot evidence)
+The researcher's directive: use whichever channel is most similar to Calhoun's Universe 25.
+The pilot decomposition then showed the two candidate implementations behave very differently:
+
+- **Material crowding-out** (participation costs a constrained agent's scarce budget): produces a
+  strong positive interaction (+0.103 [0.064, 0.144] with the attention bonus off), and removing
+  it (`participation_cost = 0`) flips the interaction negative (−0.049). This channel is the
+  direct analogue of Calhoun's mechanism — under scarcity, survival tasks compete with social
+  life, so role structure matters less; abundance removes that competition and role scarcity
+  becomes the binding constraint.
+- **Psychological survival-attention bonus** (+participation logit when stakes bind): worked
+  *against* the interaction (main config with bonus on: +0.056; off: +0.103), because it
+  asymmetrically rescues engaged agents in constrained cells and widens the constrained access
+  effect. It is also arguably anti-Calhoun (it makes poor agents attend public life *more*).
+
+**Resolution:** `survival_attention_bonus = 0` is the frozen default; H4 is carried by material
+crowding-out via the participation cost. The bonus is retained as a knob for the robustness arm
+(`configs/sensitivity_survival_attention_on.toml`). The status-competition alternative remains
+deferred to v0.2.
 
 ## D5 — Decider self-preference (FLAGGED)
 Deciders adopt their own proposal when available (pure self-preference). Alternatives: modal
@@ -50,14 +64,12 @@ preregistration.
 Survival failure = inactive round, not removal. Keeps N fixed (the flagship's scope guard) and
 avoids conflating role scarcity with demographic turnover.
 
-## D12 — Two constrained-side channels feed the interaction (FLAGGED)
-With the leaner constrained economy (endowment mean below spend), the H4 interaction can arise
-through (a) the survival-attention bonus and (b) affordability censoring — poor agents sometimes
-cannot pay the participation cost, compressing the access effect under constraint mechanically.
-Both are theory-consistent ("survival crowds out public life"), but the pilot must decompose them:
-run `survival_attention_bonus = 0` (isolates censoring) and an ample-but-binding endowment variant
-(isolates attention). Report both in the paper; do not attribute the whole interaction to the
-motivational channel.
+## D12 — Two constrained-side channels feed the interaction (RESOLVED 2026-08-05 by pilot)
+The pilot ran the decomposition. Result: material crowding-out (the participation cost binding
+under scarcity) is the dominant and only positive channel; the attention bonus pushed the other
+way. See D4 for numbers and the resulting frozen default. The paper must describe the interaction
+as opportunity-cost-driven ("abundance unmasks role scarcity"), not as a motivational-attention
+effect.
 
 ## D11 — Per-pair seat permutation shared across cells (RECORDED)
 The concentrated decider's trait profile is matched across the 4 cells of a pair, removing

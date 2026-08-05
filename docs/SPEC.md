@@ -55,8 +55,12 @@ Per run: treatment cell, seeds, event log, ledger (for conservation checks).
    no actions); else balance −= s.
 2. **Public phase.** Active agents participate (submit a proposal: project type ∈ {0,1,2}) with
    probability σ(z), z = α + β_e·(e−0.5) + β_c·(coop−0.5) + β_x·(explore−0.5) + β_r·(recip−0.5)
-   + β_s·1[resources=constrained] + δ_w·1[withdrawn], requiring balance ≥ cost. **[D4]** β_s
-   (`survival_attention_bonus`) is the named H4-mechanism carrier; mandatory sensitivity run at 0.
+   + β_s·1[stakes_bind] + δ_w·1[withdrawn], requiring balance ≥ participation cost. **[D4,
+   pilot-revised]** The H4 mechanism is **material crowding-out**: under scarcity the
+   participation cost competes with survival, so role structure is partially masked; abundance
+   removes the competition and role scarcity becomes binding. β_s (`survival_attention_bonus`)
+   defaults to 0 — the pilot showed it works against the crowding-out interaction — and is kept
+   only as a robustness knob.
 3. **Binding decision.** Decider adopts its own proposal if it made one, else a seeded-uniform
    choice among submissions, else none. **[D5]**
 4. **Contribution.** Active agents give x_i = min(K·η_i, balance), η_i = clip(coop + recip_sens·

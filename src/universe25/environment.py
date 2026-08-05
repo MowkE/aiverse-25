@@ -100,11 +100,19 @@ def simulate_run(
         decider = int(schedule[t])
         adopted_author = -1
         if active[decider]:
-            if participated[decider]:
-                adopted_author = decider
-            else:
-                submitters = np.flatnonzero(participated)
+            submitters = np.flatnonzero(participated)
+            if cfg.decider_rule == "modal":
                 if submitters.size > 0:
+                    types = proposal_type[submitters]
+                    counts = np.bincount(types, minlength=3)
+                    tied_best = np.flatnonzero(counts == counts.max())
+                    chosen_type = int(rng.choice(tied_best))
+                    candidates = submitters[types == chosen_type]
+                    adopted_author = int(rng.choice(candidates))
+            else:
+                if participated[decider]:
+                    adopted_author = decider
+                elif submitters.size > 0:
                     adopted_author = int(rng.choice(submitters))
 
         multiplier = eco.m_coord if adopted_author >= 0 else eco.m_base

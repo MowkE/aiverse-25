@@ -58,3 +58,23 @@ def test_impact_only_from_realized_authority():
     ev = result.events
     got_impact = ev[ev["impact"] > 0]
     assert ((got_impact["is_decider"]) | (got_impact["own_adopted"])).all()
+
+
+def test_self_rule_adopts_own_proposal_when_decider_participates():
+    result = simulate_run(CFG, "abundant", "concentrated", pair=2, master_seed=11)
+    ev = result.events
+    decider_participated = ev[(ev["is_decider"]) & (ev["participated"]) & (ev["active"])]
+    assert (decider_participated["adopted_author"] == decider_participated["agent_id"]).all()
+
+
+def test_modal_rule_adopts_a_submitted_proposal():
+    import dataclasses
+
+    cfg = dataclasses.replace(CFG, decider_rule="modal")
+    result = simulate_run(cfg, "abundant", "concentrated", pair=2, master_seed=11)
+    ev = result.events
+    adopted_rounds = ev[ev["adopted_author"] >= 0]
+    for rnd, group in adopted_rounds.groupby("round"):
+        author = group["adopted_author"].iloc[0]
+        author_row = ev[(ev["round"] == rnd) & (ev["agent_id"] == author)]
+        assert author_row["participated"].iloc[0]

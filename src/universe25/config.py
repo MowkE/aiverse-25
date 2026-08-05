@@ -36,8 +36,12 @@ class BehaviorConfig:
     coop_weight: float = 1.0
     explore_weight: float = 0.6
     recip_weight: float = 0.8
-    # H4 mechanism carrier (DECISIONS D4): sensitivity analysis at 0 is mandatory.
-    survival_attention_bonus: float = 0.8
+    # DECISIONS D4 (pilot-revised): the H4 mechanism is material crowding-out —
+    # constrained agents sometimes cannot afford public participation, the direct
+    # analogue of survival tasks competing with social life in Universe 25. This
+    # optional psychological bonus (+participation when stakes bind) turned out to
+    # work AGAINST that channel in the pilot, so the Calhoun-faithful default is 0.
+    survival_attention_bonus: float = 0.0
     withdrawn_penalty: float = -2.5
     lambda_up: float = 0.5
     lambda_down: float = 0.08
@@ -54,10 +58,17 @@ class ShockConfig:
     multiplier_factor: float = 0.5
 
 
+DECIDER_RULES = ("self", "modal")
+
+
 @dataclass(frozen=True)
 class RunConfig:
     n_agents: int = 8
     n_rounds: int = 40
+    # Institution rule, not agent behavior: how the decider selects among
+    # submitted proposals (DECISIONS D5). "self" = own proposal first;
+    # "modal" = most common proposal type (benevolent variant).
+    decider_rule: str = "self"
     economy: EconomyConfig = field(default_factory=EconomyConfig)
     behavior: BehaviorConfig = field(default_factory=BehaviorConfig)
     shock: ShockConfig = field(default_factory=ShockConfig)
@@ -85,6 +96,8 @@ def load_batch_config(path: str | Path) -> BatchConfig:
     if behavior.policy not in POLICIES:
         raise ValueError(f"unknown policy {behavior.policy!r}; expected one of {POLICIES}")
     run = RunConfig(economy=economy, behavior=behavior, shock=shock, **run_raw)
+    if run.decider_rule not in DECIDER_RULES:
+        raise ValueError(f"unknown decider_rule {run.decider_rule!r}; expected one of {DECIDER_RULES}")
     return BatchConfig(run=run, **raw)
 
 
