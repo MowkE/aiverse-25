@@ -1,0 +1,9 @@
+# Tiny end-to-end smoke experiment: 3 pairs x 4 cells = 12 runs.
+
+master_seed = 20260805
+n_pairs = 3
+output_dir = "outputs/smoke"
+
+[run]
+n_agents = 8
+n_rounds = 40

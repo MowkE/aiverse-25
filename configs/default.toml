@@ -1,0 +1,40 @@
+# Full experiment configuration. Calibration constants are pilot placeholders
+# (DECISIONS D1) — freeze before preregistration.
+
+master_seed = 20260805
+n_pairs = 30
+output_dir = "outputs/default"
+
+[run]
+n_agents = 8
+n_rounds = 40
+
+[run.economy]
+survival_cost = 2.0
+endow_lo = 0.8
+endow_hi = 2.4
+abundant_endowment = 1000.0
+participation_cost = 0.25
+contribution_cap = 2.0
+m_base = 1.0
+m_coord = 1.5
+
+[run.behavior]
+policy = "heterogeneous"
+alpha = 0.4
+efficacy_sensitivity = 2.5
+coop_weight = 1.0
+explore_weight = 0.6
+recip_weight = 0.8
+survival_attention_bonus = 0.8  # H4 mechanism carrier (DECISIONS D4)
+withdrawn_penalty = -2.5
+lambda_up = 0.5
+lambda_down = 0.08
+lambda_idle = 0.02
+withdraw_patience = 3
+contribution_noise = 0.08
+
+[run.shock]
+enabled = true
+duration = 3
+multiplier_factor = 0.5
