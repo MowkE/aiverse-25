@@ -1,5 +1,17 @@
 # DECISIONS — unresolved scientific choices and recorded deviations
 
+## D16 — Shakedown complete; ceiling-effect risk flagged for the LLM pilot (RECORDED 2026-08-13)
+Full shakedown finished: 600/600 calls, 100% first-try schema validity, 0 retries, 0 failures,
+0 contamination flags, $0 spent. Qualitative 2×2 (1 run/cell, 10 rounds — engineering evidence
+only, D15): participation abundant-broad 0.99, abundant-concentrated 0.90, constrained-broad
+0.20, constrained-concentrated 0.15; nHHI ~0.80 concentrated vs ~0.05 broad (manipulation bites
+for real agents). **Design implication for Study 2:** with real LLM agents, the material channel
+dominates far more than in the ABM — abundant cells sit near a participation ceiling (0.99),
+which would compress the access effect and could mask H1/H4. Before freezing the Study 2
+preregistration, the pilot must evaluate economy tuning (e.g., a higher participation cost or
+per-round contribution stakes) so the abundant arm has headroom. This is a calibration question,
+resolvable pre-freeze; it does not touch Study 1.
+
 ## D15 — Subscription-funded claude-cli SHAKEDOWN provider (RECORDED 2026-08-13)
 At the researcher's request, a `claude-cli` provider runs completions through the Claude Code CLI
 on the researcher's subscription ($0 marginal cost). It is an engineering shakedown backend only:
