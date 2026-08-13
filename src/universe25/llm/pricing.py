@@ -20,9 +20,13 @@ PRICES: dict[str, tuple[float, float]] = {
     "claude-sonnet-5": (3.00, 15.00),  # intro $2/$10 through 2026-08-31
     "claude-haiku-4-5": (1.00, 5.00),
     "claude-fable-5": (10.00, 50.00),
-    # VERIFY before use: OpenAI prices below are unverified placeholders.
+    # OpenAI prices verified 2026-08-13 against developers.openai.com/api/docs/pricing.
     "gpt-5": (1.25, 10.00),
     "gpt-5-mini": (0.25, 2.00),
+    "gpt-5-nano": (0.05, 0.40),
+    "gpt-5.6-sol": (5.00, 30.00),
+    "gpt-5.6-terra": (2.00, 12.00),
+    "gpt-5.6-luna": (0.20, 1.20),
 }
 
 CANDIDATE_MODELS = ("claude-opus-5", "claude-sonnet-5", "claude-haiku-4-5")
