@@ -84,6 +84,16 @@ thinking, frozen prices) is the researcher's call** — recommendation on record
 claude-haiku-4-5 AND claude-sonnet-5 (doubles as the cross-model robustness requirement),
 confirmatory on claude-sonnet-5, prices re-verified and frozen at preregistration.
 
+**L1 update (2026-08-13): provider = OpenAI**, resolved by budget reality — the researcher holds
+~$1,000 in OpenAI API credits and no Anthropic credits. Legitimate because nothing in Study 2 is
+frozen yet; the provider-agnostic adapter was built for exactly this. Consequences: (a) OpenAI
+prices in pricing.py are placeholders and MUST be verified against the live pricing page before
+any spend; (b) the OpenAI adapter is mock-tested only — first real smoke doubles as its
+integration test; (c) cross-model robustness becomes within-OpenAI (small vs. frontier model),
+with an optional cross-company arm (Anthropic or the researcher's Meta/Llama credits via an
+OpenAI-compatible endpoint) deferred; (d) exact model choice frozen at LLM preregistration after
+the pilot.
+
 ## D12 — Two constrained-side channels feed the interaction (RESOLVED 2026-08-05 by pilot)
 The pilot ran the decomposition. Result: material crowding-out (the participation cost binding
 under scarcity) is the dominant and only positive channel; the attention bonus pushed the other
