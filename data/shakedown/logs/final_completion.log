@@ -1,0 +1,20 @@
+  phase          calls  in tok/call  out tok/call
+  public            80         4047            90
+  decision          10         4628            25
+  contribution      80         4001            25
+  report             8         4026            45
+  total: 178 calls, ~830,677 input tokens, ~11,281 output tokens per run (incl. retry allowance)
+Batch: 4 runs (1 pairs x 4 cells)
+Estimated cost (see universe25/llm/pricing.py for the price table):
+  claude-haiku-4-5       $    0.89 per run   $      3.55 per batch  <- configured model
+  claude-opus-5          $    4.44 per run   $     17.74 per batch
+  claude-sonnet-5        $    2.66 per run   $     10.64 per batch
+4 runs complete; spent ~$0.00 of confirmed $1.00 (374 paid calls)
+                          participation_rate  output_norm  influence_nhhi
+resources   access                                                       
+abundant    broad                   0.987500     0.860000        0.057143
+            concentrated            0.900000     0.891250        0.794286
+constrained broad                   0.200000     0.321885        0.043732
+            concentrated            0.152542     0.067098        0.811098
+
+[exited with code 0]

@@ -1,0 +1,36 @@
+{
+  "master_seed": 813202601,
+  "n_pairs": 1,
+  "output_dir": "outputs/llm_shakedown",
+  "cache_dir": "",
+  "run": {
+    "n_agents": 8,
+    "n_rounds": 10,
+    "provider": "claude-cli",
+    "model": "claude-haiku-4-5",
+    "temperature": null,
+    "effort": "medium",
+    "thinking": "disabled",
+    "template_version": "llm-t1",
+    "max_schema_retries": 2,
+    "max_tokens": 400,
+    "memory_window": 6,
+    "message_max_chars": 240,
+    "report_rounds": "last",
+    "economy": {
+      "survival_cost": 2.0,
+      "endow_lo": 0.8,
+      "endow_hi": 2.4,
+      "abundant_endowment": 1000.0,
+      "participation_cost": 0.25,
+      "contribution_cap": 2.0,
+      "m_base": 1.0,
+      "m_coord": 1.5
+    },
+    "shock": {
+      "enabled": true,
+      "duration": 3,
+      "multiplier_factor": 0.5
+    }
+  }
+}

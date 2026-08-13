@@ -1,0 +1,40 @@
+  claude-sonnet-5        $    2.66 per run   $     10.64 per batch
+Traceback (most recent call last):
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/providers/claude_cli.py", line 106, in complete
+    proc = subprocess.run(
+           ^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/samahiththellakal/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/claude', '-p', 'Round 4. Your balance: 1.39 units.\nThe chair adopted Agent Plover\'s suggestion; this round\'s rate on the joint fund is 1.50.\n\nAcross 3 completed rounds you spoke up 0 times, chaired 0 rounds, and had your own suggestion adopted 0 times.\nRecent rounds:\nRound 1: Agent Osprey chaired; no suggestion was adopted; the pooled fund paid 0.00 (rate 1.00), 0.00 to each member; you stayed quiet and gave 0.00; your balance is now 1.05.\nRound 2: Agent Wren chaired; Agent Wren\'s suggestion was adopted; the pooled fund paid 4.35 (rate 1.50), 0.54 to each member; you stayed quiet and gave 0.00; your balance is now 1.49. Messages: Agent Wren said "I propose we adopt option 1 this round. A coordinated effort benefits all of us and builds group momentum.".\nRound 3: Agent Lapwing chaired; Agent Sparrow\'s suggestion was adopted; the pooled fund paid 2.25 (rate 1.50), 0.28 to each member; you stayed quiet and gave 0.00; your balance is now 1.48. Messages: Agent Sparrow said "Supporting option 1. Coordination worked beautifully last round—1.50x multiplier! Let\'s sustain that momentum.".\n\nChoose what fraction of the maximum 2.0 units you give to the joint fund this round (you can never give more than your balance).\n\nReply with JSON: {"contribution_fraction": x} where x is a number between 0 and 1.\n\nRespond with ONLY a single JSON object (no prose, no code fences) that validates against this JSON Schema:\n{"type": "object", "properties": {"contribution_fraction": {"type": "number"}}, "required": ["contribution_fraction"], "additionalProperties": false}', '--system-prompt', "You are Agent Avocet, one of 8 members of a small group that meets for a series of rounds.\n\nIncome and staying active:\nEach round you receive an income drawn between 0.8 and 2.4 units; the exact amount varies from round to round.\nStaying active costs 2.0 units per round, deducted automatically. If your balance is below 2.0 at the start of a round, you sit that round out: you cannot speak, decide, or give that round, but you keep your balance and rejoin once you can afford it.\n\nSpeaking up:\nEach round, active members may speak up. Speaking up costs 0.25 units and lets you suggest one of three joint projects (option 0, 1, or 2) together with a short public message (at most 240 characters), visible to all members exactly as you write it.\n\nThe chair:\nEach round exactly one member holds the chair; the chair for the round is announced. The chair decides which submitted suggestion, if any, the group adopts. This matters: if a suggestion is adopted, every unit given to the joint fund that round is multiplied at a higher rate than if none is adopted.\n\nGiving:\nAfter the chair's decision, each active member chooses how much to give to the joint fund, up to 2.0 units (and at most your balance). The multiplied fund is shared equally among all 8 members, whether or not they gave.\n\nAlways reply with a single JSON object in exactly the requested format, and nothing else.\n\nYou have no tools. Never attempt to use tools. Output only the requested JSON object.", '--output-format', 'json', '--model', 'claude-haiku-4-5']' timed out after 240.0 seconds
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/samahiththellakal/.venvs/universe25-abm/bin/universe25-llm", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/cli.py", line 101, in main
+    summary = run_llm_batch(cfg, provider, output_dir=args.out)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/orchestrator.py", line 506, in run_llm_batch
+    result = simulate_llm_run(
+             ^^^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/orchestrator.py", line 379, in simulate_llm_run
+    rec = engine.resolve(
+          ^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/orchestrator.py", line 176, in resolve
+    response = self.provider.complete(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samahiththellakal/Library/Mobile Documents/com~apple~CloudDocs/sociologyxai/universe25-abm/src/universe25/llm/providers/claude_cli.py", line 116, in complete
+    raise ClaudeCLIError(f"claude CLI timed out after {_TIMEOUT_S}s") from exc
+universe25.llm.providers.claude_cli.ClaudeCLIError: claude CLI timed out after 240.0s
+
+[exited with code 1]

@@ -2,8 +2,9 @@
 
 ## D16 — Shakedown complete; ceiling-effect risk flagged for the LLM pilot (RECORDED 2026-08-13)
 Full shakedown finished: 600/600 calls, 100% first-try schema validity, 0 retries, 0 failures,
-0 contamination flags, $0 spent. Qualitative 2×2 (1 run/cell, 10 rounds — engineering evidence
-only, D15): participation abundant-broad 0.99, abundant-concentrated 0.90, constrained-broad
+0 contamination flags, $0 spent. Archived under `data/shakedown/` (tag `shakedown-v1`).
+**The shakedown comprises exactly four experimental units** (1 run/cell, 10 rounds); its
+directional patterns are not evidence, engineering observations only (D15): participation abundant-broad 0.99, abundant-concentrated 0.90, constrained-broad
 0.20, constrained-concentrated 0.15; nHHI ~0.80 concentrated vs ~0.05 broad (manipulation bites
 for real agents). **Design implication for Study 2:** with real LLM agents, the material channel
 dominates far more than in the ABM — abundant cells sit near a participation ceiling (0.99),

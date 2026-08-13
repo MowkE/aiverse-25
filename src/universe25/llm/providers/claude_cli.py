@@ -89,12 +89,22 @@ class ClaudeCLIProvider:
             "You have no tools. Never attempt to use tools. "
             "Output only the requested JSON object."
         )
+        # Max-isolation flag set (docs/CLI_ISOLATION.md): cuts injected harness
+        # context from ~24K tokens to a ~510-token residual wrapper and blocks
+        # settings, memories, MCP servers, session state, and tools.
         cmd = [
             self._binary,
             "-p",
             user,
             "--system-prompt",
             system,
+            "--exclude-dynamic-system-prompt-sections",
+            "--no-session-persistence",
+            "--setting-sources",
+            "",
+            "--strict-mcp-config",
+            "--disallowedTools",
+            "*",
             "--output-format",
             "json",
             "--model",

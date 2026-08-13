@@ -1,0 +1,93 @@
+{
+  "code_version": "0.1.0+2a0d537",
+  "runs": {
+    "p0000-constrained-concentrated": {
+      "pseudonyms": [
+        "Agent Plover",
+        "Agent Avocet",
+        "Agent Dunlin",
+        "Agent Osprey",
+        "Agent Merlin",
+        "Agent Lapwing",
+        "Agent Wren",
+        "Agent Sparrow"
+      ],
+      "names_seed": [
+        813202601,
+        0,
+        1001
+      ],
+      "order_seed": [
+        813202601,
+        0,
+        1002
+      ]
+    },
+    "p0000-constrained-broad": {
+      "pseudonyms": [
+        "Agent Plover",
+        "Agent Avocet",
+        "Agent Dunlin",
+        "Agent Osprey",
+        "Agent Merlin",
+        "Agent Lapwing",
+        "Agent Wren",
+        "Agent Sparrow"
+      ],
+      "names_seed": [
+        813202601,
+        0,
+        1001
+      ],
+      "order_seed": [
+        813202601,
+        0,
+        1002
+      ]
+    },
+    "p0000-abundant-concentrated": {
+      "pseudonyms": [
+        "Agent Plover",
+        "Agent Avocet",
+        "Agent Dunlin",
+        "Agent Osprey",
+        "Agent Merlin",
+        "Agent Lapwing",
+        "Agent Wren",
+        "Agent Sparrow"
+      ],
+      "names_seed": [
+        813202601,
+        0,
+        1001
+      ],
+      "order_seed": [
+        813202601,
+        0,
+        1002
+      ]
+    },
+    "p0000-abundant-broad": {
+      "pseudonyms": [
+        "Agent Plover",
+        "Agent Avocet",
+        "Agent Dunlin",
+        "Agent Osprey",
+        "Agent Merlin",
+        "Agent Lapwing",
+        "Agent Wren",
+        "Agent Sparrow"
+      ],
+      "names_seed": [
+        813202601,
+        0,
+        1001
+      ],
+      "order_seed": [
+        813202601,
+        0,
+        1002
+      ]
+    }
+  }
+}
