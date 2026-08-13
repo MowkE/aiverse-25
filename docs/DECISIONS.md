@@ -1,5 +1,14 @@
 # DECISIONS — unresolved scientific choices and recorded deviations
 
+## D15 — Subscription-funded claude-cli SHAKEDOWN provider (RECORDED 2026-08-13)
+At the researcher's request, a `claude-cli` provider runs completions through the Claude Code CLI
+on the researcher's subscription ($0 marginal cost). It is an engineering shakedown backend only:
+the CLI injects ~24K tokens of uncontrolled harness scaffolding around our prompts (measured),
+exposes no temperature/sampling metadata, and cannot pin the request surface. Therefore shakedown
+outputs are excluded from all preregistered analyses and from the paper; their only permitted uses
+are integration testing, schema-compliance measurement, and qualitative prompt review. Real data
+comes from API-key providers (L1: OpenAI) under the budget guard.
+
 ## D13 — Post-freeze FP clamp in normalized_hhi (RECORDED 2026-08-05, integrity-verified)
 During Study 2 development, property testing found `normalized_hhi` can return −6.9e−17 on
 exactly-equal vectors (floating-point error violating the nHHI ∈ [0,1] invariant). Fixed with a

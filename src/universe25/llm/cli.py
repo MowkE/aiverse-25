@@ -81,6 +81,15 @@ def main(argv: list[str] | None = None) -> int:
 
         est = estimate_run(cfg.run)
         batch_cost = est.cost(cfg.run.model) * cfg.n_pairs * 4
+        if cfg.run.provider == "claude-cli":
+            # Subscription-funded shakedown: zero marginal dollars, but still
+            # gated behind an explicit --confirm-budget acknowledgement.
+            batch_cost = 0.0
+            print(
+                "NOTE: claude-cli is a subscription-funded SHAKEDOWN provider. "
+                "Marginal cost $0; results are excluded from preregistered "
+                "analyses (DECISIONS D15)."
+            )
         print(format_estimate(cfg))
         guard = BudgetGuard(model=cfg.run.model)
         try:

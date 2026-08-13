@@ -1,0 +1,17 @@
+# Subscription-funded engineering shakedown (DECISIONS D15).
+# Real language model via the Claude Code CLI; $0 marginal cost.
+# 1 pair x 4 cells = 4 runs at 10 rounds (~600 sequential CLI calls total).
+# Results are engineering evidence only — never preregistered data.
+
+master_seed = 813202601
+n_pairs = 1
+output_dir = "outputs/llm_shakedown"
+
+[run]
+n_agents = 8
+n_rounds = 10
+provider = "claude-cli"
+model = "claude-haiku-4-5"
+template_version = "llm-t1"
+max_schema_retries = 2
+report_rounds = "last"

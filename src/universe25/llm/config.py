@@ -8,7 +8,7 @@ from pathlib import Path
 
 from ..config import EconomyConfig, ShockConfig
 
-PROVIDERS = ("mock", "anthropic", "openai")
+PROVIDERS = ("mock", "anthropic", "openai", "claude-cli")
 PHASES = ("public", "decision", "contribution", "report")
 REPORT_MODES = ("none", "last", "all")
 THINKING_MODES = ("disabled", "adaptive")

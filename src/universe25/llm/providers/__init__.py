@@ -25,4 +25,8 @@ def make_provider(name: str, model: str, guard=None):
         from .openai_provider import OpenAIProvider
 
         return OpenAIProvider(guard=guard)
+    if name == "claude-cli":
+        from .claude_cli import ClaudeCLIProvider
+
+        return ClaudeCLIProvider(guard=guard)
     raise ValueError(f"unknown provider {name!r}")

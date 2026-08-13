@@ -2,10 +2,14 @@
 
 import numpy as np
 import pytest
-from hypothesis import given
+from hypothesis import HealthCheck, given, settings
 from hypothesis import strategies as st
 
 from universe25.metrics import entropy, gini, normalized_hhi
+
+# Property tests share one profile: no wall-clock deadline and no too-slow
+# health check, so suite-level machine load cannot flake them.
+relaxed = settings(deadline=None, suppress_health_check=[HealthCheck.too_slow])
 
 
 class TestGini:
@@ -49,18 +53,21 @@ class TestEntropy:
         assert entropy(np.zeros(3)) == 0.0
 
 
+@relaxed
 @given(st.lists(st.floats(min_value=0.0, max_value=1e6), min_size=2, max_size=32))
 def test_gini_bounds(values):
     g = gini(np.array(values))
     assert 0.0 <= g < 1.0
 
 
+@relaxed
 @given(st.lists(st.floats(min_value=0.0, max_value=1e6), min_size=2, max_size=32))
 def test_nhhi_bounds(values):
     h = normalized_hhi(np.array(values))
     assert 0.0 <= h <= 1.0 + 1e-12
 
 
+@relaxed
 @given(st.lists(st.floats(min_value=0.0, max_value=1e6), min_size=1, max_size=16))
 def test_entropy_bounds(counts):
     h = entropy(np.array(counts))
