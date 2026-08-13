@@ -102,18 +102,28 @@ class ClaudeCLIProvider:
         ]
 
         start = time.perf_counter()
-        try:
-            proc = subprocess.run(
-                cmd,
-                check=False,
-                capture_output=True,
-                text=True,
-                timeout=_TIMEOUT_S,
-                cwd=self._cwd,
-                env=self._env,
-            )
-        except subprocess.TimeoutExpired as exc:
-            raise ClaudeCLIError(f"claude CLI timed out after {_TIMEOUT_S}s") from exc
+        proc = None
+        # A single hung call (transient rate-limit wait) must not kill a long
+        # batch: retry the timeout once after a cool-down before giving up.
+        for attempt in range(2):
+            try:
+                proc = subprocess.run(
+                    cmd,
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=_TIMEOUT_S,
+                    cwd=self._cwd,
+                    env=self._env,
+                )
+                break
+            except subprocess.TimeoutExpired as exc:
+                if attempt == 1:
+                    raise ClaudeCLIError(
+                        f"claude CLI timed out twice ({_TIMEOUT_S}s each)"
+                    ) from exc
+                time.sleep(30.0)
+        assert proc is not None
         latency_ms = (time.perf_counter() - start) * 1000.0
 
         if proc.returncode != 0:
